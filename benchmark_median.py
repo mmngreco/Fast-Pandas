@@ -7,11 +7,11 @@ def pandas_median(df):
 
 
 def numpy_median(df):
-    return np.median(df["A"])
+    return np.median(df["A"].values)
 
 
 params = {
-    "df_generator": 'pd.DataFrame(np.random.randint(1, df_size, (df_size, 2)), columns=list("AB"))',
+    "df_generator": 'pd.DataFrame(np.random.randn(1, df_size, (df_size, 2)), columns=list("AB"))',
     "functions_to_evaluate": [pandas_median, numpy_median],
     "title": "Pandas Median vs Numpy Median",
     "user_df_size_powers": [2, 3, 4, 5, 6, 7, 8],

@@ -11,10 +11,14 @@ class Benchmarker:
         """
         Parameters
         ----------
-        df_generator: string , a string containing the needed command to generate the test dataframe.
-        functions_to_evaluate: List[function], a list of functions to be evaluated.
-        user_df_size_powers: List[int] containing the log10(sizes) of the test_dfs (optional).
-        user_loop_size_powers: List[int] containing the log10(sizes) of the loops_sizes (optional).
+        df_generator : string
+            a string containing the needed command to generate the test dataframe.
+        functions_to_evaluate : List[function]
+            a list of functions to be evaluated.
+        user_df_size_powers : List[int]
+            containing the log10(sizes) of the test_dfs (optional).
+        user_loop_size_powers : List[int]
+            containing the log10(sizes) of the loops_sizes (optional).
         """
 
         self.df_generator = df_generator
@@ -41,12 +45,15 @@ class Benchmarker:
         for i in range(len(functions_results)):
             for j in range(i + 1, len(functions_results)):
                 if isinstance(functions_results[i], pd.DataFrame):
-                    if not functions_results[i].equals(functions_results[j]): valid = False
+                    if not functions_results[i].equals(functions_results[j]):
+                        valid = False
                 elif isinstance(functions_results[i], np.ndarray):
-                    if not np.array_equal(functions_results[i], functions_results[j]): valid = False
+                    if not np.array_equal(functions_results[i], functions_results[j]):
+                        valid = False
                 else:
                     try:
-                        if not (functions_results[i] == functions_results[j]): valid = False
+                        if not (functions_results[i] == functions_results[j]):
+                            valid = False
                     except Exception as e:
                         valid = False
 
@@ -54,9 +61,10 @@ class Benchmarker:
 
     def benchmark_time(self, function_to_evaluate):
         """
-        Creates a test_df with 'df_generator', and runs 'function_to_evaluate' N times, where N = len(df_size_powers)
-        For each run i, a test_df of size 10 ** self.df_size_power[i] is created, and the function_to_evaluate is run
-        for 10 ** loop_size_power[i] times.
+        Creates a test_df with 'df_generator', and runs 'function_to_evaluate'
+        N times, where N = len(df_size_powers). For each run i, a test_df of
+        size 10 ** self.df_size_power[i] is created, and the
+        function_to_evaluate is run for 10 ** loop_size_power[i] times.
 
         Returns
         -------
@@ -65,7 +73,8 @@ class Benchmarker:
         """
         results = []
 
-        for df_size_power, loop_size_power in zip(self.df_size_powers, self.loop_size_powers):
+        for df_size_power, loop_size_power in zip(
+        self.df_size_powers, self.loop_size_powers):
             df_size = 10 ** df_size_power
             print("\tTesting with a dataframe of size: ", df_size)
             df = eval(self.df_generator)
@@ -86,7 +95,8 @@ class Benchmarker:
 
     def benchmark_all(self):
         """
-        Benchmarks all functions in functions_to_evaluate; saves result in benchmark_results.
+        Benchmarks all functions in functions_to_evaluate; saves result in
+        benchmark_results.
         """
         for func in self.functions_to_evaluate:
             print("Benchmarking function: ", func.__name__)
