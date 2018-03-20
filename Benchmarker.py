@@ -135,7 +135,7 @@ class Benchmarker:
         plt.xticks(range(len(self.df_size_powers)), ["$10^{}$".format(x) for x in self.df_size_powers])
         plt.legend(frameon=True)
         plt.savefig("exports/{}.png".format(self.title), bbox_inches="tight")
-        plt.show()
+        # plt.show()
 
     def print_results(self):
         for x in self.benchmark_results:

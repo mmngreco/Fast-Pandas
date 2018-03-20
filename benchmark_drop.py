@@ -14,7 +14,7 @@ def group_by_drop(df):
 
 
 params = {
-    "df_generator": 'pd.DataFrame(np.random.randn(1, df_size, (df_size, 2)), columns=list("AB"))',
+    "df_generator": 'pd.DataFrame(np.random.randint(1, df_size, (df_size, 2)), columns=list("AB"))',
     "functions_to_evaluate": [duplicated, drop_duplicates, group_by_drop],
     "title": "Benchmark for dropping duplicate rows",
 }

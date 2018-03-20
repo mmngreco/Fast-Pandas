@@ -1,6 +1,6 @@
 from benchmark_create_column import *
-from benchmark_drop import *
-from benchmark_loop import *
+# from benchmark_drop import *
+# from benchmark_loop import *
 from benchmark_mean import *
 from benchmark_median import *
 from benchmark_prod import *

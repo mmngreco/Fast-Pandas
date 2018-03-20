@@ -11,7 +11,7 @@ def numpy_unique(df):
 
 
 params = {
-    "df_generator": 'pd.DataFrame(np.random.randn(1, df_size, (df_size, 2)), columns=list("AB"))',
+    "df_generator": 'pd.DataFrame(np.random.randint(1, df_size, (df_size, 2)), columns=list("AB"))',
     "functions_to_evaluate": [pandas_unique, numpy_unique],
     "title": "Pandas Unique vs Numpy Unique",
 }
