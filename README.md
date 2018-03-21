@@ -1,3 +1,5 @@
+> Disclaimer: I'm working on this project, the content is posible that no make sense for now.
+
 # Fast Pandas
 
 #### A Benchmarked Pandas Cheat Sheet
@@ -35,7 +37,7 @@ Calling ***plot_results( )*** will show and save a plot like the one shown below
 
 You can clearly see that pandas sum is slightly faster than numpy sum, for dataframes below one million rows.
 
-![](https://i.imgur.com/Wq39R0U.png)
+![](./exports/Pandas Sum vs Numpy Sum.png)
 
 ### Results Summary:
 ![](https://i.imgur.com/ADrrPtd.png)
@@ -60,7 +62,7 @@ def group_by_drop(df):
 * ***duplicated* is the fastest; irrespective of size.**
 * **The *group_by* drop shows an interesting trend. It could be possible for it to be faster than duplicated for data frames larger than 100 million rows.**
 
-![](https://i.imgur.com/T2rk3qc.png)
+![](./exports/Benchmark for dropping duplicate rows.png)
 
 #### 1.2 - Iterating over all rows:
 Tested functions:
@@ -76,7 +78,7 @@ def itertuples_function(df):
 ```
       
  - **itertuples is significantly faster than iterrows (up to 50 times faster)**
-![](https://i.imgur.com/CjjCCoB.png)
+![](./exports/Benchmark for iterating over all rows.png)
 
 
 
@@ -105,7 +107,9 @@ def ne_create_selection(df):
  * ***ne_create_selection* is the fastest method for dataframes smaller than 10000 rows, followed bt *ne_selection* for larger data frames.**
  * ***loc and query selections* are identical in performance.**
  * **Square bracket selection is the slowest method.**
-![](https://i.imgur.com/iy2c44M.png)
+
+![](./exports/Benchmark for iterating over all rows.png)
+
 #### 1.4 - Creating a new column:
 Tested functions:
 
@@ -118,13 +122,16 @@ def eval_method(df):
 ```
  * **The regular method is faster than the eval method.**
 * **eval_methods shows and interesting erratic behavior that I couldn't explain; however, I repeated the test several times with different mathematical operations and still reproduced the same plot every time.**
-![enter image description here](https://i.imgur.com/RWqPHXj.png)
+
+![enter image description here](./exports/Benchmark for iterating over all rows.png)
 
 
 ## 2 - Pandas vs Numpy.
 
 This section tests the performance of functions that are found in both numpy and padnas. 
+
 #### 2.1 - Summation performance:
+
 Tested functions:
    
 ```python
@@ -137,10 +144,8 @@ def numpy_sum(df):
       
  * **pandas sum is slightly faster than numpy sum, for dataframes below one million rows.**
    
-   ![](https://i.imgur.com/Wq39R0U.png)
+   ![](./exports/Benchmark for iterating over all rows.png)
    
-
-
 #### 2.2 - Sort performance:
 Tested functions:
 
@@ -154,7 +159,7 @@ def numpy_sort(df):
 
 * **numpy_sort is considerably faster than pandas, irrespective of size; although they both use quicksort as the default sorting algorithm.**
 
-![](https://i.imgur.com/V9AK0pK.png)
+![](./exports/Benchmark for iterating over all rows.png)
 
 
 #### 2.3 - Unique performance:
@@ -171,9 +176,10 @@ def numpy_unique(df):
 * **For data frames over 100 rows pandas unique is faster than numpy.**
 * **It is worth noting that unlike pandas unique, numpy unique returns a sorted array, which explains the discrepancy in results**
 
-![](https://i.imgur.com/YDREzNo.png)
+![](./exports/Benchmark for iterating over all rows.png)
 
 #### 2.4 - Median performance:
+
 Tested functions:
 
 ```python
@@ -185,8 +191,11 @@ def numpy_median(df):
 ```
 
 * **No significant statistical difference in performance.**
-![](https://i.imgur.com/tFxos1W.png)
+
+![](./exports/Benchmark for iterating over all rows.png)
+
 #### 2.5 - Mean performance:
+
 Tested functions:
 
 ```python
@@ -214,7 +223,7 @@ def numpy_prod(df):
         
  * **pandas product is slightly faster than numpy product, for dataframes below one million rows.**
 
-![](https://i.imgur.com/NmLHueA.png)
+![](./exports/Benchmark for iterating over all rows.png)
 
 ## Extra notes:
 
